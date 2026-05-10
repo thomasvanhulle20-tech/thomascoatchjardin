@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thomas — Coach en Jardin | Conseils pelouse & gazon pro</title>
+  <meta name="description" content="Dans le monde du golf depuis 14 ans, Thomas vous aide à transformer votre jardin. Envoyez vos photos, recevez des conseils concrets pour votre pelouse sous 48h.">
+  <meta name="keywords" content="coach jardin, conseils pelouse, gazon dense, tonte pro, entretien jardin, diagnostic jardin en ligne, expert gazon golf">
+  <meta name="author" content="Thomas, Coach en Jardin">
+  <meta property="og:title" content="Thomas — Coach en Jardin | Astuces faciles pour votre pelouse">
+  <meta property="og:description" content="14 ans dans le monde du golf. Envoyez vos photos, recevez des conseils personnalisés sous 48h.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thomascoachjardin.fr">
+  <link rel="canonical" href="https://thomascoachjardin.fr">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --forest: #0d2818;
+      --mid: #1a4a2e;
+      --sage: #3d7a52;
+      --mint: #6fbf8a;
+      --gold: #d4a853;
+      --cream: #f5f0e8;
+      --ink: #0d1a10;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      max-width: 480px;
+      margin: 0 auto;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    .nav {
+      background: var(--forest);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+    .hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: all .3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-brand { text-align: right; }
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: white;
+      line-height: 1;
+    }
+    .nav-sub {
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--mint);
+      font-weight: 300;
+      margin-top: 3px;
+    }
+
+    /* DRAWER */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      pointer-events: none;
+      z-index: 240;
+      transition: background .3s;
+    }
+    .overlay.open { background: rgba(0,0,0,0.7); pointer-events: all; }
+    .drawer {
+      position: fixed;
+      top: 0;
+      left: -105%;
+      width: 80%;
+      max-width: 300px;
+      height: 100%;
+      background: var(--ink);
+      z-index: 250;
+      transition: left .35s cubic-bezier(.4,0,.2,1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .drawer.open { left: 0; }
+    .dhead { padding: 24px 20px 18px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .dhead-name { font-family: 'Playfair Display', serif; font-size: 20px; color: white; font-weight: 700; }
+    .dhead-sub { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--mint); margin-top: 4px; font-weight: 300; }
+    .dlinks { padding: 8px 0; }
+    .dlink {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      color: rgba(255,255,255,0.5);
+      font-size: 14px;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: color .2s;
+      text-decoration: none;
+    }
+    .dlink:hover { color: white; background: rgba(255,255,255,0.03); }
+    .dcta { padding: 20px; }
+    .dcta button {
+      width: 100%;
+      background: var(--gold);
+      color: var(--forest);
+      padding: 13px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+    .d-section { padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.05); }
+    .d-stitle { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 12px; }
+    .d-conseil { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 11px; margin-bottom: 8px; }
+    .d-ct { font-size: 12px; font-weight: 600; color: var(--mint); margin-bottom: 3px; }
+    .d-cd { font-size: 11px; color: rgba(255,255,255,0.35); font-weight: 300; line-height: 1.5; }
+    .d-review { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 13px; margin-bottom: 8px; }
+    .d-stars { color: var(--gold); font-size: 11px; letter-spacing: 2px; margin-bottom: 5px; }
+    .d-rt { font-family: 'Playfair Display', serif; font-size: 13px; color: rgba(255,255,255,0.62); font-style: italic; line-height: 1.5; margin-bottom: 6px; }
+    .d-rw { font-size: 11px; color: rgba(255,255,255,0.25); font-weight: 300; }
+    .d-about { font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.7; font-weight: 300; }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      height: 88vh;
+      max-height: 620px;
+      overflow: hidden;
+    }
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(13,40,24,0.2) 0%, rgba(13,40,24,0.92) 75%);
+    }
+    .hero-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 28px 22px 36px;
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .eyebrow-line { width: 20px; height: 1px; background: var(--gold); }
+    .eyebrow-text {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 400;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: white;
+      line-height: 1.07;
+      margin-bottom: 12px;
+    }
+    .hero h1 em { font-style: italic; color: var(--mint); }
+    .hero-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 24px;
+    }
+    .hero-desc b { color: rgba(255,255,255,0.9); font-weight: 500; }
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background: var(--gold);
+      color: var(--forest);
+      text-align: center;
+      padding: 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .hero-stats {
+      display: flex;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hstat { flex: 1; text-align: center; }
+    .hstat-n {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: white;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .hstat-l {
+      font-size: 9px;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+    .hstat-sep { width: 1px; background: rgba(255,255,255,0.1); margin: 4px 0; }
+
+    /* AVANT APRES */
+    .aa-section { padding: 28px 20px; background: var(--cream); }
+    .sec-eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .sec-eyebrow::before { content: ''; width: 16px; height: 1px; background: var(--sage); }
+    .sec-eyebrow span { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--sage); font-weight: 500; }
+    .aa-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .slider-wrap {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      height: 220px;
+      cursor: col-resize;
+      touch-action: none;
+      user-select: none;
+      box-shadow: 0 8px 32px rgba(13,40,24,0.15);
+    }
+    .s-after, .s-before-wrap { position: absolute; inset: 0; }
+    .s-after img, .s-before-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .s-before-wrap { width: 50%; overflow: hidden; }
+    .s-before-wrap img { width: 480px; object-position: left center; }
+    .s-divider {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: white;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    }
+    .s-handle {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 38px; height: 38px;
+      background: white;
+      border-radius: 50%;
+      z-index: 11;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #333;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.25);
+    }
+    .s-lbl {
+      position: absolute;
+      bottom: 10px;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      z-index: 12;
+      font-weight: 500;
+    }
+    .s-lbl.l { left: 10px; background: rgba(0,0,0,0.6); color: rgba(255,255,255,0.9); }
+    .s-lbl.r { right: 10px; background: rgba(13,40,24,0.9); color: var(--mint); }
+    .aa-note { font-size: 11px; color: #bbb; text-align: center; margin-top: 10px; font-style: italic; }
+
+    /* GRID PHOTOS */
+    .grid4 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 18px; }
+    .gcard { border-radius: 11px; overflow: hidden; position: relative; height: 115px; }
+    .gcard img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(1.1); }
+    .gcard-tag {
+      position: absolute;
+      bottom: 8px; left: 8px;
+      background: rgba(13,40,24,0.85);
+      color: var(--mint);
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    /* CONTACT */
+    .contact-section { background: var(--forest); padding: 28px 20px; }
+    .contact-section .sec-eyebrow::before { background: var(--mint); }
+    .contact-section .sec-eyebrow span { color: var(--mint); }
+    .contact-section h2 { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: white; margin-bottom: 6px; }
+    .cdesc { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 20px; font-weight: 300; }
+    .form { display: flex; flex-direction: column; gap: 11px; }
+    .flabel { font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.32); display: block; margin-bottom: 5px; }
+    .finput {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 13px 14px;
+      color: white;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border .2s;
+    }
+    .finput:focus { border-color: var(--mint); }
+    .finput::placeholder { color: rgba(255,255,255,0.2); }
+    .dropzone {
+      background: rgba(255,255,255,0.04);
+      border: 1px dashed rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border .2s;
+    }
+    .dropzone:hover { border-color: var(--mint); }
+    .dropzone-icon { font-size: 28px; margin-bottom: 6px; }
+    .dropzone p { font-size: 12px; color: rgba(255,255,255,0.28); font-weight: 300; }
+    .submit-btn {
+      width: 100%;
+      background: var(--gold);
+      color: var(--forest);
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .reviews-wrap { background: var(--cream); padding: 16px 20px; text-align: center; border-top: 1px solid rgba(13,40,24,0.07); }
+    .reviews-wrap button {
+      background: transparent;
+      border: 1px solid rgba(13,40,24,0.18);
+      color: var(--sage);
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      padding: 11px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .reviews-wrap button:hover { background: var(--forest); color: white; border-color: var(--forest); }
+
+    footer { background: var(--ink); padding: 24px 20px; text-align: center; }
+    .footer-name { font-family: 'Playfair Display', serif; font-size: 17px; color: white; font-weight: 700; }
+    .footer-copy { font-size: 10px; color: rgba(255,255,255,0.18); margin-top: 6px; font-weight: 300; }
+
+    @media (min-width: 480px) {
+      body { border-left: 1px solid rgba(0,0,0,0.06); border-right: 1px solid rgba(0,0,0,0.06); }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Thomas Coach en Jardin",
+    "description": "Coach en jardin professionnel, 14 ans d'expérience dans le golf. Conseils pelouse, diagnostic jardin en ligne, France entière.",
+    "url": "https://thomascoachjardin.fr",
+    "email": "contact@thomascoachjardin.fr",
+    "areaServed": "France",
+    "serviceType": ["Coaching jardin", "Diagnostic pelouse", "Conseils gazon"],
+    "sameAs": []
+  }
+  </script>
+</head>
+<body>
+
+<div class="overlay" id="overlay" onclick="closeDrawer()"></div>
+<div class="drawer" id="drawer" role="navigation" aria-label="Menu principal">
+  <div class="dhead">
+    <div class="dhead-name">Thomas</div>
+    <div class="dhead-sub">Coach en Jardin</div>
+  </div>
+  <div class="dlinks">
+    <a class="dlink" href="#hero" onclick="closeDrawer()">🏠&nbsp; Accueil</a>
+    <a class="dlink" href="#aa" onclick="closeDrawer()">📸&nbsp; Avant / Après</a>
+    <a class="dlink" href="#contact" onclick="closeDrawer()">✉️&nbsp; Envoyer mon jardin</a>
+  </div>
+  <div class="dcta"><button onclick="goTo('contact')">📸 Envoyer mon jardin</button></div>
+  <div class="d-section">
+    <div class="d-stitle">À propos</div>
+    <p class="d-about">Adjoint dans un golf professionnel depuis 14 ans. Je gère chaque jour greens et fairways — et je partage ces techniques avec les particuliers.</p>
+  </div>
+  <div class="d-section">
+    <div class="d-stitle">Conseils</div>
+    <div class="d-conseil"><div class="d-ct">🌿 Pelouse dense</div><div class="d-cd">Scarification, sur-semis, fertilisation comme au golf.</div></div>
+    <div class="d-conseil"><div class="d-ct">✂️ Lignes nettes</div><div class="d-cd">Technique du retournement, hauteur de lame exacte.</div></div>
+    <div class="d-conseil"><div class="d-ct">📅 Calendrier</div><div class="d-cd">Les bons gestes au bon moment, mois par mois.</div></div>
+  </div>
+  <div class="d-section">
+    <div class="d-stitle">⭐ Avis clients</div>
+    <div class="d-review"><div class="d-stars">★★★★★</div><p class="d-rt">"Mon gazon n'a jamais été aussi dense."</p><div class="d-rw">Sophie D. · Lille</div></div>
+    <div class="d-review"><div class="d-stars">★★★★★</div><p class="d-rt">"De catastrophique à impeccable en 3 semaines."</p><div class="d-rw">Julien M. · Amiens</div></div>
+    <div class="d-review"><div class="d-stars">★★★★☆</div><p class="d-rt">"Le plan d'entretien m'a tout changé."</p><div class="d-rw">Alexandra P. · Valenciennes</div></div>
+  </div>
+</div>
+
+<nav class="nav" aria-label="Navigation principale">
+  <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-brand">
+    <div class="nav-name">Thomas</div>
+    <div class="nav-sub">Coach en Jardin</div>
+  </div>
+</nav>
+
+<main>
+  <section class="hero" id="hero" aria-label="Thomas coach en jardin, expert golf 14 ans">
+    <img
+      class="hero-img"
+      src="https://images.pexels.com/photos/1453499/pexels-photo-1453499.jpeg?auto=compress&cs=tinysrgb&w=800"
+      alt="Green de golf avec pelouse parfaite — Thomas coach en jardin"
+      loading="eager"
+    >
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="eyebrow"><div class="eyebrow-line"></div><div class="eyebrow-text">14 ans dans le golf</div></div>
+      <h1>Astuces faciles<br>pour <em>votre jardin</em></h1>
+      <p class="hero-desc"><b>Dans le monde du golf depuis 14 ans,</b> je transforme votre jardin avec des conseils concrets pour votre pelouse.</p>
+      <a class="cta-btn" href="#contact">📸 Envoyer mon jardin — réponse 48h</a>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-n">14</div><div class="hstat-l">ans terrain</div></div>
+        <div class="hstat-sep"></div>
+        <div class="hstat"><div class="hstat-n">365</div><div class="hstat-l">jours/an</div></div>
+        <div class="hstat-sep"></div>
+        <div class="hstat"><div class="hstat-n">48h</div><div class="hstat-l">réponse</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="aa-section" id="aa" aria-label="Exemples avant après jardins transformés">
+    <div class="sec-eyebrow"><span>Résultats réels</span></div>
+    <h2>Avant / Après</h2>
+    <div class="slider-wrap" id="slider1" role="img" aria-label="Comparaison avant après pelouse">
+      <div class="s-after">
+        <img
+          src="https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Jardin après coaching Thomas — pelouse dense et verte"
+          loading="lazy"
+        >
+      </div>
+      <div class="s-before-wrap" id="bef1">
+        <img
+          src="https://images.pexels.com/photos/1301856/pexels-photo-1301856.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Jardin avant coaching — gazon clairsemé"
+          loading="lazy"
+        >
+      </div>
+      <div class="s-divider" id="sdiv1"></div>
+      <div class="s-handle" id="shan1" aria-hidden="true">◄►</div>
+      <div class="s-lbl l">Avant</div>
+      <div class="s-lbl r">Après</div>
+    </div>
+    <p class="aa-note">Glissez pour comparer · Pelouse rénovée en 6 semaines</p>
+
+    <div class="grid4" aria-label="Galerie jardins et golf">
+      <div class="gcard">
+        <img src="https://images.pexels.com/photos/1084542/pexels-photo-1084542.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Lignes de tonte gazon parfaites" loading="lazy">
+        <div class="gcard-tag">Tonte</div>
+      </div>
+      <div class="gcard">
+        <img src="https://images.pexels.com/photos/2132250/pexels-photo-2132250.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Pelouse dense et verte jardin" loading="lazy">
+        <div class="gcard-tag">Pelouse</div>
+      </div>
+      <div class="gcard">
+        <img src="https://images.pexels.com/photos/1268076/pexels-photo-1268076.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Jardin particulier entretenu" loading="lazy">
+        <div class="gcard-tag">Jardin</div>
+      </div>
+      <div class="gcard">
+        <img src="https://images.pexels.com/photos/54330/golf-ball-golf-sport-golf-course-54330.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Green golf gazon professionnel" loading="lazy">
+        <div class="gcard-tag">Golf</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact" aria-label="Envoyer son jardin à Thomas pour un diagnostic">
+    <div class="sec-eyebrow"><span>Diagnostic jardin</span></div>
+    <h2>Montrez-moi,<br>je vous dis quoi faire</h2>
+    <p class="cdesc">Quelques photos — conseils personnalisés sous 48h.</p>
+    <form class="form" action="#" method="post" novalidate>
+      <div><label class="flabel" for="prenom">Prénom</label><input class="finput" type="text" id="prenom" name="prenom" placeholder="Sophie" autocomplete="given-name" required></div>
+      <div><label class="flabel" for="email">E-mail</label><input class="finput" type="email" id="email" name="email" placeholder="vous@email.fr" autocomplete="email" required></div>
+      <div><label class="flabel" for="message">Votre jardin</label><textarea class="finput" id="message" name="message" rows="2" placeholder="Gazon clairsemé, zone ombragée..." required></textarea></div>
+      <div class="dropzone" onclick="document.getElementById('photos').click()">
+        <div class="dropzone-icon">📷</div>
+        <p>Déposez vos photos ici · JPG / PNG</p>
+        <input type="file" id="photos" name="photos" accept="image/*" multiple style="display:none">
+      </div>
+      <button type="submit" class="submit-btn">Envoyer mon jardin →</button>
+    </form>
+  </section>
+
+  <div class="reviews-wrap">
+    <button onclick="toggleDrawer()" aria-label="Voir les avis clients">⭐ Voir les avis clients</button>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-name">Thomas · Coach en Jardin</div>
+  <div class="footer-copy">© 2024 · contact@thomascoachjardin.fr · <a href="#" style="color:rgba(255,255,255,0.18);text-decoration:none">Mentions légales</a></div>
+</footer>
+
+<script>
+  function toggleDrawer() {
+    const d = document.getElementById('drawer');
+    const o = document.getElementById('overlay');
+    const h = document.getElementById('hamburger');
+    const op = d.classList.toggle('open');
+    o.classList.toggle('open', op);
+    h.classList.toggle('open', op);
+    h.setAttribute('aria-expanded', op);
+  }
+  function closeDrawer() {
+    ['drawer','overlay','hamburger'].forEach(id => document.getElementById(id).classList.remove('open'));
+    document.getElementById('hamburger').setAttribute('aria-expanded', 'false');
+  }
+  function goTo(id) {
+    closeDrawer();
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 350);
+  }
+
+  (function() {
+    const sl = document.getElementById('slider1');
+    const bf = document.getElementById('bef1');
+    const dv = document.getElementById('sdiv1');
+    const hd = document.getElementById('shan1');
+    let drag = false;
+    function set(x) {
+      const r = sl.getBoundingClientRect();
+      const p = Math.min(Math.max((x - r.left) / r.width, 0.05), 0.95) * 100 + '%';
+      bf.style.width = p;
+      dv.style.left = p;
+      hd.style.left = p;
+    }
+    sl.addEventListener('mousedown', e => { drag = true; set(e.clientX); });
+    window.addEventListener('mousemove', e => { if (drag) set(e.clientX); });
+    window.addEventListener('mouseup', () => drag = false);
+    sl.addEventListener('touchstart', e => { drag = true; set(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('touchmove', e => { if (drag) set(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('touchend', () => drag = false);
+  })();
+</script>
+</body>
+</html>

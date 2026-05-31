@@ -1,0 +1,33 @@
+{
+  "name": "TonCoachJardin",
+  "short_name": "CoachJardin",
+  "description": "Coach en jardin professionnel - Conseils pelouse, gazon et massifs fleuris par Thomas, expert golf 14 ans",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d2818",
+  "theme_color": "#0d2818",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "home", "garden"],
+  "lang": "fr",
+  "screenshots": [
+    {
+      "src": "/hero.jpg",
+      "sizes": "1200x1600",
+      "type": "image/jpeg"
+    }
+  ]
+}
